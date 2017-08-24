@@ -1,0 +1,144 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fnil\fcharset134 .PingFangSC-Regular;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red255\green255\blue255;\red35\green35\blue35;
+\red83\green104\blue112;\red244\green244\blue244;\red115\green138\blue4;\red33\green118\blue199;\red129\green144\blue144;
+\red110\green32\blue13;\red0\green0\blue0;\red29\green133\blue25;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c100000;\cssrgb\c100000\c100000\c100000;\cssrgb\c18431\c18431\c18431;
+\cssrgb\c39608\c48235\c51373;\cssrgb\c96471\c96471\c96471;\cssrgb\c52157\c60000\c0;\cssrgb\c14902\c54510\c82353;\cssrgb\c57647\c63137\c63137;
+\csgenericrgb\c42974\c12454\c5281;\csgenericrgb\c0\c0\c0;\csgenericrgb\c11489\c52197\c9852;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18500\viewh18160\viewkind0
+\deftab720
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f0\fs48 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Xcode
+\f1 \'d6\'d0\'b5\'c4\'b4\'fa\'c2\'eb\'c6\'ac\'b6\'ce\'c4\'ac\'c8\'cf\'b7\'c5\'d4\'da\'cf\'c2\'c3\'e6\'b5\'c4\'c4\'bf\'c2\'bc\'d6\'d0\'a3\'ba
+\f2\fs50 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 ~/Library/Developer/Xcode/UserData/CodeSnippets \cf4 \
+\
+1.strong
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,strong) <#Class#> *<#object#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 2.weak
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,weak) <#Class#> *<#object#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 3.copy
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,copy) NSString *<#string#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 4.assign
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,assign) <#Class#> <#property#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 5.delegate
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,weak) id<<#protocol#>> <#delegate#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 6.block
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 @property (nonatomic,copy) <#Block#> <#block#>;
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 7.mark
+\f3 \'a3\'ba
+\f2 \
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f4\fs42 \cf5 \cb6 #pragma mark <#mark#>
+\f2\fs50 \cf4 \cb3 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf4 8.ReUseCell
+\f3 \'a3\'ba\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f4\fs44 \cf7 \cb6 static\cf5  \cf8 NSString\cf5  *rid=<#rid#>;  \
+\
+ <#Class#> *cell=[tableView dequeueReusableCellWithIdentifier:rid];  \
+\
+ \cf7 if\cf5 (cell==nil)\{  \
+\
+ cell=[[<#Class#> alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];  \
+\
+ \}  \
+\
+ \cf7 return\cf5  cell;\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs50 \cf4 \cb3 9.MainGCD
+\f3 \'a3\'ba\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f4\fs44 \cf5 \cb6 dispatch_async(dispatch_get_main_queue(), ^\{  \
+<#\cf7 code\cf5 #>  \
+  \});\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs50 \cf4 \cb3 10.AfterGCD
+\f3 \'a3\'ba\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f4\fs44 \cf5 \cb6  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<#delayInSeconds#> * NSEC_PER_SEC)), dispatch_get_main_queue(), ^\{  \
+<#\cf7 code\cf5  to be executed after a specified delay#>  \
+\});\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2\fs50 \cf4 \cb3 11.OnceGCD
+\f3 \'a3\'ba\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f4\fs44 \cf5 \cb6 static \cf7 dispatch_once_t \cf5 onceToken\cf9 ;  \cf5 \
+ \cf7 dispatch_once(&onceToken, \cf5 ^\{  \
+<\cf9 #code to be executed once#>  \cf5 \
+ \})\cf9 ;\
+\
+12.zhoulup  
+\fs40 \cf10 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 #pragma mark ====================<#
+\f1 \'d7\'a2\'ca\'cd\'c4\'da\'c8\'dd
+\f4 #>=================\
+13.\cf11 zhoulu/\
+ \cf12 /*==========ZL
+\f1 \'d7\'a2\'ca\'cd
+\f4 start===========\
+\pard\tx989\pardeftab989\pardirnatural\partightenfactor0
+\cf12      *1.<#
+\f1 \'d7\'a2\'ca\'cd\'c3\'e8\'ca\'f6
+\f4 #>\
+     *2.<#
+\f1 \'d7\'a2\'ca\'cd\'c3\'e8\'ca\'f6
+\f4 #>\
+     *3.<#
+\f1 \'d7\'a2\'ca\'cd\'c3\'e8\'ca\'f6
+\f4 #>\
+     *4.<#
+\f1 \'d7\'a2\'ca\'cd\'c3\'e8\'ca\'f6
+\f4 #>\
+     ===========ZL
+\f1 \'d7\'a2\'ca\'cd
+\f4 end==========*/}

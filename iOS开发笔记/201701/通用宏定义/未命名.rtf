@@ -1,0 +1,292 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 Verdana;
+}
+{\colortbl;\red255\green255\blue255;\red129\green144\blue144;\red244\green244\blue244;\red83\green104\blue112;
+\red37\green146\blue134;\red115\green138\blue4;\red0\green0\blue0;\red248\green252\blue228;}
+{\*\expandedcolortbl;;\cssrgb\c57647\c63137\c63137;\cssrgb\c96471\c96471\c96471;\cssrgb\c39608\c48235\c51373;
+\cssrgb\c16471\c63137\c59608;\cssrgb\c52157\c60000\c0;\cssrgb\c0\c0\c0;\cssrgb\c97647\c98824\c91373;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f0\fs48 \cf2 \cb3 \expnd0\expndtw0\kerning0
+//
+\f1 \'cd\'a8\'d3\'c3\'ba\'ea\'b6\'a8\'d2\'e5
+\f0 \cf4 \
+\
+#ifndef define_h\
+\
+#define define_h\
+\
+\cf2 //
+\f1 \'bb\'f1\'c8\'a1\'cf\'b5\'cd\'b3\'b6\'d4\'cf\'f3
+\f0 \cf4 \
+\
+#define kApplication[UIApplication sharedApplication]\
+\
+#define kAppWindow[UIApplication sharedApplication].delegate.window\
+\
+#define kAppDelegate[AppDelegate shareAppDelegate]\
+\
+#define kRootViewController[UIApplication sharedApplication].delegate.window.rootViewController\
+\
+#define kUserDefaults[NSUserDefaults standardUserDefaults]\
+\
+#define kNotificationCenter[NSNotificationCenter defaultCenter]\
+\
+\cf2 //
+\f1 \'bb\'f1\'c8\'a1\'c6\'c1\'c4\'bb\'bf\'ed\'b8\'df
+\f0 \cf4 \
+\
+#define KScreenWidth([[UIScreen mainScreen]bounds].size.width)\
+\
+#define KScreenHeight[[UIScreen mainScreen]bounds].size.height\
+\
+#define kScreen_Bounds[UIScreen mainScreen].bounds\
+\
+#define Iphone6ScaleWidth KScreenWidth/\cf5 375.0\cf4 \
+\
+#define Iphone6ScaleHeight KScreenHeight/\cf5 667.0\cf4 \
+\
+\cf2 //
+\f1 \'b8\'f9\'be\'dd
+\f0 ip6
+\f1 \'b5\'c4\'c6\'c1\'c4\'bb\'c0\'b4\'c0\'ad\'c9\'ec
+\f0 \cf4 \
+\
+#define kRealValue(with)((with)*(KScreenWidth/\cf5 375.0\cf4 f))\
+\
+\cf2 //
+\f1 \'c7\'bf\'c8\'f5\'d2\'fd\'d3\'c3
+\f0 \cf4 \
+\
+#define kWeakSelf(type)__weak typeof(type)weak##type = type;\
+\
+#define kStrongSelf(type)__strong typeof(type)type = weak##type;\
+\
+\cf2 //View
+\f1 \'d4\'b2\'bd\'c7\'ba\'cd\'bc\'d3\'b1\'df\'bf\'f2
+\f0 \cf4 \
+\
+#define ViewBorderRadius(View,Radius,Width,Color)\\\
+\
+\\\
+\
+[View.layer setCornerRadius:(Radius)]\cf2 ;\\\cf4 \
+\
+[View.layer setMasksToBounds:YES]\cf2 ;\\\cf4 \
+\
+[View.layer setBorderWidth:(\cf6 Width\cf4 )]\cf2 ;\\\cf4 \
+\
+[View.layer setBorderColor:[\cf6 Color\cf4  CGColor]]\
+\
+\cf2 // View
+\f1 \'d4\'b2\'bd\'c7
+\f0 \cf4 \
+\
+#define ViewRadius(View,Radius)\\\
+\
+\\\
+\
+[View.layer setCornerRadius:(Radius)]\cf2 ;\\\cf4 \
+\
+[View.layer setMasksToBounds:YES]\
+\
+\cf2 //property
+\f1 \'ca\'f4\'d0\'d4\'bf\'ec\'cb\'d9\'c9\'f9\'c3\'f7
+\f0 \cf4 \
+\
+#define PropertyString(s)@property(nonatomic,copy)NSString * s\
+\
+#define PropertyNSInteger(s)@property(nonatomic,assign)NSIntegers\
+\
+#define PropertyFloat(s)@property(nonatomic,assign)floats\
+\
+#define PropertyLongLong(s)@property(nonatomic,assign)long long s\
+\
+#define PropertyNSDictionary(s)@property(nonatomic,strong)NSDictionary * s\
+\
+#define PropertyNSArray(s)@property(nonatomic,strong)NSArray * s\
+\
+#define PropertyNSMutableArray(s)@property(nonatomic,strong)NSMutableArray * s\
+\
+\cf2 ///IOS
+\f1 \'b0\'e6\'b1\'be\'c5\'d0\'b6\'cf
+\f0 \cf4 \
+\
+#define IOSAVAILABLEVERSION(version)([[UIDevice currentDevice]availableVersion:version]< \cf5 0\cf4 )\
+\
+\cf2 //
+\f1 \'b5\'b1\'c7\'b0\'cf\'b5\'cd\'b3\'b0\'e6\'b1\'be
+\f0 \cf4 \
+\
+#define CurrentSystemVersion[[UIDevice currentDevice].systemVersion doubleValue]\
+\
+\cf2 //
+\f1 \'b5\'b1\'c7\'b0\'d3\'ef\'d1\'d4
+\f0 \cf4 \
+\
+#define CurrentLanguage(
+\f1 \'a3\'db
+\f0 NSLocale preferredLanguages]objectAtIndex:\cf5 0\cf4 ])\
+\
+\cf2 //-------------------
+\f1 \'b4\'f2\'d3\'a1\'c8\'d5\'d6\'be
+\f0 -------------------------\cf4 \
+\
+\cf2 //DEBUG
+\f1 \'c4\'a3\'ca\'bd\'cf\'c2\'b4\'f2\'d3\'a1\'c8\'d5\'d6\'be
+\f0 ,
+\f1 \'b5\'b1\'c7\'b0\'d0\'d0
+\f0 \cf4 \
+\
+#ifdef DEBUG\
+\
+#define DLog(fmt,...)NSLog((@"%s[Line %d]" fmt),__PRETTY_FUNCTION__,__LINE__,##__VA_ARGS__);\
+\
+#else\
+\
+#define DLog(...)\
+\
+#endif\
+\
+\cf2 //
+\f1 \'c6\'b4\'bd\'d3\'d7\'d6\'b7\'fb\'b4\'ae
+\f0 \cf4 \
+\
+#define NSStringFormat(format,...)[NSString stringWithFormat:format,##__VA_ARGS__]\
+\
+\cf2 //
+\f1 \'d1\'d5\'c9\'ab
+\f0 \cf4 \
+\
+#define KClearColor[UIColor clearColor]\
+\
+#define KWhiteColor[UIColor whiteColor]\
+\
+#define KBlackColor[UIColor blackColor]\
+\
+#define KGrayColor[UIColor grayColor]\
+\
+#define KGray2Color[UIColor lightGrayColor]\
+\
+#define KBlueColor[UIColor blueColor]\
+\
+#define KRedColor[UIColor redColor]\
+\
+#define kRandomColorKRGBColor(arc4random_uniform(\cf5 256\cf4 )/\cf5 255.0\cf4 ,arc4random_uniform(\cf5 256\cf4 )/\cf5 255.0\cf4 ,arc4random_uniform(\cf5 256\cf4 )/\cf5 255.0\cf4 )\cf2 //
+\f1 \'cb\'e6\'bb\'fa\'c9\'ab\'c9\'fa\'b3\'c9
+\f0 \cf4 \
+\
+\cf2 //
+\f1 \'d7\'d6\'cc\'e5
+\f0 \cf4 \
+\
+#define BOLDSYSTEMFONT(FONTSIZE)[UIFont boldSystemFontOfSize:FONTSIZE]\
+\
+#define SYSTEMFONT(FONTSIZE)[UIFont systemFontOfSize:FONTSIZE]\
+\
+#define FONT(NAME,FONTSIZE)[UIFont fontWithName:(NAME)size:(FONTSIZE)]\
+\
+\cf2 //
+\f1 \'b6\'a8\'d2\'e5
+\f0 UIImage
+\f1 \'b6\'d4\'cf\'f3
+\f0 \cf4 \
+\
+#define ImageWithFile(_pointer)[UIImage imageWithContentsOfFile:([[NSBundle mainBundle]pathForResource:[NSString stringWithFormat:@"%@@%dx",_pointer,(int)[UIScreen mainScreen].nativeScale]ofType:@"png"])]\
+\
+#define IMAGE_NAMED(name)[UIImage imageNamed:name]\
+\
+\cf2 //
+\f1 \'ca\'fd\'be\'dd\'d1\'e9\'d6\'a4
+\f0 \cf4 \
+\
+#define StrValid(f)(f!=nil &&[f isKindOfClass:[NSString class]]&& ![f isEqualToString:@""])\
+\
+#define SafeStr(f)(StrValid(f)?f:@"")\
+\
+#define HasString(str,eky)([str rangeOfString:key].location!=NSNotFound)\
+\
+#define ValidStr(f)StrValid(f)\
+\
+#define ValidDict(f)(f!=nil &&[f isKindOfClass:[NSDictionary class]])\
+\
+#define ValidArray(f)(f!=nil &&[f isKindOfClass:[NSArray class]]&&[f count]>\cf5 0\cf4 )\
+\
+#define ValidNum(f)(f!=nil &&[f isKindOfClass:[NSNumber class]])\
+\
+#define ValidClass(f,cls)(f!=nil &&[f isKindOfClass:[cls class]])\
+\
+#define ValidData(f)(f!=nil &&[f isKindOfClass:[NSData class]])\
+\
+\cf2 //
+\f1 \'bb\'f1\'c8\'a1\'d2\'bb\'b6\'ce\'ca\'b1\'bc\'e4\'bc\'e4\'b8\'f4
+\f0 \cf4 \
+\
+#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();\
+\
+#define kEndTimeNSLog(@"Time: %f",CFAbsoluteTimeGetCurrent()- start)\
+\
+\cf2 //
+\f1 \'b4\'f2\'d3\'a1\'b5\'b1\'c7\'b0\'b7\'bd\'b7\'a8\'c3\'fb
+\f0 \cf4 \
+\
+#define ITTDPRINTMETHODNAME()ITTDPRINT(@"%s",__PRETTY_FUNCTION__)\
+\
+\cf2 //GCD\cf4 \
+\
+#define kDISPATCH_ASYNC_BLOCK(block)dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,\cf5 0\cf4 ),block)\
+\
+#define kDISPATCH_MAIN_BLOCK(block)dispatch_async(dispatch_get_main_queue(),block)\
+\
+\cf2 //GCD -
+\f1 \'d2\'bb\'b4\'ce\'d0\'d4\'d6\'b4\'d0\'d0
+\f0 \cf4 \
+\
+#define kDISPATCH_ONCE_BLOCK(onceBlock)static dispatch_once_t onceToken;dispatch_once(&onceToken,onceBlock);\
+\
+\cf2 //
+\f1 \'b5\'a5\'c0\'fd\'bb\'af\'d2\'bb\'b8\'f6\'c0\'e0
+\f0 \cf4 \
+\
+#define SINGLETON_FOR_HEADER(className)\\\
+\
+\\\
+\
++(className *)shared##className;\
+\
+#define SINGLETON_FOR_CLASS(className)\\\
+\
+\\\
+\
++(className *)shared##className \{ \\\
+\
+static className *shared##className = nil;\\\
+\
+static dispatch_once_t onceToken\cf2 ;\\\cf4 \
+\
+dispatch_once(&onceToken,^\{ \\\
+\
+shared##className =[[self alloc]init];\\\
+\
+\})\cf2 ;\\\cf4 \
+\
+\cf6 return\cf4  shared##className;\\\
+\
+\}\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f2\fs26 \cf7 \cb8 \outl0\strokewidth0 \strokec7 // 
+\f1 \'d4\'da\'bf\'aa\'b7\'a2\'d6\'d0\'a3\'ac\'cd\'a8\'b3\'a3\'b6\'bc\'b6\'a8\'d2\'e5\'c1\'cb\'bf\'ec\'bd\'dd\'b5\'f7\'d3\'c3\'b5\'c4\'ba\'ea
+\f2 \
+#define kImgName(name) [UIImage imageNamed:name]\
+#define kResourcePath(name, type) ([[NSBundle mainBundle] pathForResource:name ofType:type])\
+#define kImgFromFile(name, type) [[UIImage alloc] initWithContentsOfFile:kResourcePath(name, type)]\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f0\fs48 \cf4 \cb3 \outl0\strokewidth0 \
+\
+\
+#endif \cf2 /* define_h */\cf4 \
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>zhoulu/</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    /*==========ZL注释start===========
+     *1.&lt;#注释描述#&gt;
+     *2.&lt;#注释描述#&gt;
+     *3.&lt;#注释描述#&gt;
+     *4.&lt;#注释描述#&gt;
+     ===========ZL注释end==========*/</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F9C48117-DBF2-4FB4-AF54-14D026D3A129</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>My ZhuShi </string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

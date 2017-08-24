@@ -1,0 +1,45 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red109\green109\blue109;\red115\green0\blue2;
+\red52\green52\blue52;\red16\green121\blue2;\red82\green0\blue83;\red11\green84\blue83;\red0\green0\blue117;
+}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c50196\c50196\c50196\c4706;\cssrgb\c53333\c0\c0;
+\cssrgb\c26667\c26667\c26667;\cssrgb\c0\c53333\c0;\cssrgb\c40000\c0\c40000;\cssrgb\c0\c40000\c40000;\cssrgb\c0\c0\c53333;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15440\viewh14800\viewkind0
+\deftab720
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f0\fs46 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 //\'c8\'ab\'be\'d6\'ca\'b9\'d3\'c3
+\f1     \
+//
+\f0 \'cf\'b5\'cd\'b3\'bc\'b6\'b1\'f0
+\f1 \
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard]\cf4 \strokec4 ;\cf2 \strokec2 \
+    pasteboard\cf5 \strokec5 .string\cf2 \strokec2  = self\cf5 \strokec5 .pTextField.text\cf4 \strokec4 ;\cf2 \strokec2 \
+    NSLog(@\cf6 \strokec6 "\\r\\n====>
+\f0 \'ca\'e4\'c8\'eb\'bf\'f2\'c4\'da\'c8\'dd\'ce\'aa
+\f1 :%@\\r\\n====>
+\f0 \'bc\'f4\'c7\'d0\'b0\'e5\'c4\'da\'c8\'dd\'ce\'aa
+\f1 :%@"\cf2 \strokec2 ,self\cf5 \strokec5 .pTextField.text\cf2 \strokec2 ,pasteboard\cf5 \strokec5 .string\cf2 \strokec2 )\cf4 \strokec4 ;\cf2 \strokec2 \
+\
+
+\f0 //\'b8\'b4\'d6\'c6\
+
+\f1     \cf4 \strokec4 //
+\f0 \'d3\'a6\'d3\'c3\'c4\'da\'b5\'a5\'b6\'c0\'ca\'b9\'d3\'c3\'ca\'b1
+\f1 \cf2 \strokec2 \
+    \cf7 \strokec7 NSString\cf2 \strokec2  * strBuildID = [[[\cf7 \strokec7 NSBundle\cf2 \strokec2  mainBundle]infoDictionary]objectForKey:@\cf6 \strokec6 "CFBundleIdentifier"\cf2 \strokec2 ];\
+    UIPasteboard * myPasteboard = [UIPasteboard pasteboardWithName:strBuildID create:\cf8 \strokec8 YES\cf2 \strokec2 ];\
+    myPasteboard\cf7 \strokec7 .string\cf2 \strokec2  = @\cf6 \strokec6 "
+\f0 \'b8\'b4\'d6\'c6\'b2\'e2\'ca\'d4\'ca\'fd\'be\'dd
+\f1 "\cf2 \strokec2 ; \
+\
+//
+\f0 \'d5\'b3\'cc\'f9
+\f1 \
+\pard\pardeftab720\sl320\partightenfactor0
+\cf7 \strokec7 NSString\cf2 \strokec2  * strBuildID = [[[\cf7 \strokec7 NSBundle\cf2 \strokec2  mainBundle]infoDictionary]objectForKey:@\cf6 \strokec6 "CFBundleIdentifier"\cf2 \strokec2 ];\
+    UIPasteboard * myPasteboard = [UIPasteboard pasteboardWithName:strBuildID create:\cf8 \strokec8 NO\cf2 \strokec2 ];\
+    \cf9 \strokec9 self\cf7 \strokec7 .pLabel.text\cf2 \strokec2  = myPasteboard\cf7 \strokec7 .string\cf2 \strokec2 ;}

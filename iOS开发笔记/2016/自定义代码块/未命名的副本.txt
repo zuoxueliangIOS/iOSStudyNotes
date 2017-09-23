@@ -2,17 +2,17 @@ Xcode中的代码片段默认放在下面的目录中：
 ~/Library/Developer/Xcode/UserData/CodeSnippets 
 
 1.strong：
-@property (nonatomic,strong) <#Class#> *<#object#>;
+@property (nonatomic, strong) <#Class#> *<#object#>;
 2.weak：
-@property (nonatomic,weak) <#Class#> *<#object#>;
+@property (nonatomic, weak) <#Class#> *<#object#>;
 3.copy：
-@property (nonatomic,copy) NSString *<#string#>;
+@property (nonatomic, copy) NSString *<#string#>;
 4.assign：
-@property (nonatomic,assign) <#Class#> <#property#>;
+@property (nonatomic, assign) <#Class#> <#property#>;
 5.delegate：
-@property (nonatomic,weak) id<<#protocol#>> <#delegate#>;
+@property (nonatomic, weak) id<<#protocol#>> <#delegate#>;
 6.block：
-@property (nonatomic,copy) <#Block#> <#block#>;
+@property (nonatomic, copy) <#Block#> <#block#>;
 7.mark：
 #pragma mark <#mark#>
 8.ReUseCell：

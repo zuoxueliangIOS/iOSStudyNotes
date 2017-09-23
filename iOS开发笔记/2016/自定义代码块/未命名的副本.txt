@@ -1,0 +1,51 @@
+Xcode中的代码片段默认放在下面的目录中：
+~/Library/Developer/Xcode/UserData/CodeSnippets 
+
+1.strong：
+@property (nonatomic,strong) <#Class#> *<#object#>;
+2.weak：
+@property (nonatomic,weak) <#Class#> *<#object#>;
+3.copy：
+@property (nonatomic,copy) NSString *<#string#>;
+4.assign：
+@property (nonatomic,assign) <#Class#> <#property#>;
+5.delegate：
+@property (nonatomic,weak) id<<#protocol#>> <#delegate#>;
+6.block：
+@property (nonatomic,copy) <#Block#> <#block#>;
+7.mark：
+#pragma mark <#mark#>
+8.ReUseCell：
+static NSString *rid=<#rid#>;  
+
+ <#Class#> *cell=[tableView dequeueReusableCellWithIdentifier:rid];  
+
+ if(cell==nil){  
+
+ cell=[[<#Class#> alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];  
+
+ }  
+
+ return cell;
+9.MainGCD：
+dispatch_async(dispatch_get_main_queue(), ^{  
+<#code#>  
+  });
+10.AfterGCD：
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<#delayInSeconds#> * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{  
+<#code to be executed after a specified delay#>  
+});
+11.OnceGCD：
+static dispatch_once_t onceToken;  
+ dispatch_once(&onceToken, ^{  
+<#code to be executed once#>  
+ });
+
+12.zhoulup  #pragma mark ====================<#注释内容#>=================
+13.zhoulu/
+ /*==========ZL注释start===========
+     *1.<#注释描述#>
+     *2.<#注释描述#>
+     *3.<#注释描述#>
+     *4.<#注释描述#>
+     ===========ZL注释end==========*/

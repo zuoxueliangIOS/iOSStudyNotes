@@ -2,8 +2,8 @@
 //  CommonHeader.h
 //  ZXMeng
 //
-//  Created by apple on 13-12-25.
-//  Copyright (c) 2013年 KingkongWolf. All rights reserved.
+//  Created by apple on 17-09-23.
+//  Copyright (c) 2017年 KingkongWolf. All rights reserved.
 //
 
 #ifndef ZXMeng_CommonHeader_h
@@ -74,30 +74,8 @@
 #define Main_grayBackgroundColor @"f6f6f6"
 //浅灰
 #define Main_lightGrayBackgroundColor @"999999"
-//深灰
-#define Main_darkGrayBackgroundColor @"625046"
-//普色
-#define Main_textNormalBackgroundColor @"260e00"
-//重要文字
-#define Main_textRedBackgroundColor @"f1653e"
-//分割线
-#define Main_spelBackgroundColor @"dedede"
-//边框颜色灰色
-#define Main_bianGrayBackgroundColor @"cccccc"
 
-//背景灰
-#define Main_beijingGray_BackgroundColor @"f1f1f1"
 
-//按钮背景灰色
-#define Main_ButtonGray_backgroundColor @"b9b6b6"
-//按钮正常颜色
-#define Main_ButtonNormel_backgroundColor @"ae8e5d"
-
-//首页 头部颜色 金色
-#define Main_home_jinse_backgroundColor @"625046"
-
-//首页 头部文字 灰色
-#define Main_home_huise_backgroundColor @"c29f8c"
 
 
 #define REQUEST_ERROR_ZL @"服务连接失败"
@@ -225,6 +203,11 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 #define kIOS7DELTA   ((kDeviceVersion>=7.0)? 20 :0 )
 #define kTabBarHeight 49
 
+//内联函数
+UIKIT_STATIC_INLINE id weak_self(id sender){
+    __weak typeof(sender) weakSelf = sender;
+    return weakSelf;
+}
 
 
 

@@ -1,0 +1,3 @@
+1.Command+N新建，iOS->other->PCH file    “工程名-Prefix.pch”
+2.在工程的 TARGETS 里面 Building Setting 中搜索 Prefix Header,然后 Precomplie Prefix Header右边的NO改为YES。
+3,Prefix Header 天假PCH文件的路径 ：格式 $(SRCROOT)/项目名称/pch文件名

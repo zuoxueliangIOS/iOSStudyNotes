@@ -1,0 +1,51 @@
+// Create NSData object
+NSData *nsdata = [@"iOS Developer Tips encoded in Base64"
+  dataUsingEncoding:NSUTF8StringEncoding];
+ 
+// Get NSString from NSData object in Base64
+NSString *base64Encoded = [nsdata base64EncodedStringWithOptions:0];
+ 
+// Print the Base64 encoded string
+NSLog(@"Encoded: %@", base64Encoded);
+ 
+// Let's go the other way...
+ 
+// NSData from the Base64 encoded str
+NSData *nsdataFromBase64String = [[NSData alloc]
+  initWithBase64EncodedString:base64Encoded options:0];
+ 
+// Decoded NSString from the NSData
+NSString *base64Decoded = [[NSString alloc] 
+  initWithData:nsdataFromBase64String encoding:NSUTF8StringEncoding];
+NSLog(@"Decoded: %@", base64Decoded);
+
+
+
+
+
+
+// Create NSData object  
+NSData *dataTake2 =   
+  [@"iOS Developer Tips" dataUsingEncoding:NSUTF8StringEncoding];  
+   
+// Convert to Base64 data  
+NSData *base64Data = [dataTake2 base64EncodedDataWithOptions:0];  
+NSLog(@"%@", [NSString stringWithUTF8String:[base64Data bytes]]);  
+   
+// Do something with the data  
+// ...  
+   
+// Now convert back from Base64  
+NSData *nsdataDecoded = [base64Data initWithBase64EncodedData:base64Data options:0];  
+NSString *str = [[NSString alloc] initWithData:nsdataDecoded encoding:NSUTF8StringEncoding];  
+NSLog(@"%@", str);  
+
+
+
+
+NSData *encodeData = [decodeString dataUsingEncoding:NSUTF8StringEncoding];
+NSString *base64String = [encodeData base64EncodedStringWithOptions:0];
+
+
+NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:base64String options:0];
+NSString *decodedString = [[NSString alloc] initWithData:decodedData encoding:NSUTF8StringEncoding];

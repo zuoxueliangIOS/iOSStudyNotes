@@ -20,6 +20,8 @@
 #define iPad_Normal		(DEV_SCREEN(768, 1024))
 #define iPad_Retina		(DEV_SCREEN(768*2, 1024*2))
 
+#define iPhone_X  (CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(375.0f, 812.0f)) || CGSizeEqualToSize([UIScreen mainScreen].bounds.size, CGSizeMake(812.0f, 375.0f))?:NO)
+
 #define	RetinaScree		(iPhone_Retina || iPhone5 || iPad_Retina)
 #define NormalScree		(iPad_Normal||iPhone_Normal)
 

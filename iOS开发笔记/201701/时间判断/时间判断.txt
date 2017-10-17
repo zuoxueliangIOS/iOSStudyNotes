@@ -1,0 +1,302 @@
+[代码分享]判断日期是今天，昨天还是明天   
+/*
+//获取时间
+    NSDate * date = [NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *  locationString = [dateformatter stringFromDate:date];
+
+*/
+/*
+//转化为  本时区  时间NSDate 格式 解决 8小时时差
+- (void)tDate
+{
+    NSDate *date2 = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+	//设置时区
+    //NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    //[formatter setTimeZone:timeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date2];
+    NSDate *localeDate = [date dateByAddingTimeInterval: interval];
+    NSLog(@"本时区的时间%@", localeDate);
+}
+
+
+*/
+
+-(NSString *)compareDate:(NSDate *)date{
+
+    NSTimeInterval secondsPerDay = 24 * 60 * 60;
+    NSDate *today = [[NSDate alloc] init];
+    NSDate *tomorrow, *yesterday;
+
+    tomorrow = [today dateByAddingTimeInterval: secondsPerDay];
+    yesterday = [today dateByAddingTimeInterval: -secondsPerDay];
+
+// 10 first characters of description is the calendar date:
+    NSString * todayString = [[today description] substringToIndex:10];
+    NSString * yesterdayString = [[yesterday description] substringToIndex:10];
+    NSString * tomorrowString = [[tomorrow description] substringToIndex:10];
+
+    NSString * dateString = [[date description] substringToIndex:10];
+
+    if ([dateString isEqualToString:todayString])
+    {
+        return @"今天";
+    } else if ([dateString isEqualToString:yesterdayString])
+    {
+        return @"昨天";
+    }else if ([dateString isEqualToString:tomorrowString])
+    {
+        return @"明天";
+    }
+    else
+    {
+        return dateString;
+    }
+}
+//----------------------------------------------
+
+/**
+/////  和当前时间比较
+////   1）1分钟以内 显示        :    刚刚
+////   2）1小时以内 显示        :    X分钟前
+///    3）今天或者昨天 显示      :    今天 09:30   昨天 09:30
+///    4) 今年显示              :   09月12日
+///    5) 大于本年      显示    :    2013/09/09
+**/
+
++ (NSString *)formateDate:(NSString *)dateString withFormate:(NSString *) formate
+{
+    
+    @try {
+        //实例化一个NSDateFormatter对象
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:formate];
+        
+        NSDate * nowDate = [NSDate date];
+        
+        /////  将需要转换的时间转换成 NSDate 对象
+        NSDate * needFormatDate = [dateFormatter dateFromString:dateString];
+        /////  取当前时间和转换时间两个日期对象的时间间隔
+        /////  这里的NSTimeInterval 并不是对象，是基本型，其实是double类型，是由c定义的:  typedef double NSTimeInterval;
+        NSTimeInterval time = [nowDate timeIntervalSinceDate:needFormatDate];
+        
+        //// 再然后，把间隔的秒数折算成天数和小时数：
+        
+        NSString *dateStr = @"";
+        
+        if (time<=60) {  //// 1分钟以内的
+            dateStr = @"刚刚";
+        }else if(time<=60*60){  ////  一个小时以内的
+            
+            int mins = time/60;
+            dateStr = [NSString stringWithFormat:@"%d分钟前",mins];
+            
+        }else if(time<=60*60*24){   //// 在两天内的
+            
+            [dateFormatter setDateFormat:@"YYYY/MM/dd"];
+            NSString * need_yMd = [dateFormatter stringFromDate:needFormatDate];
+            NSString *now_yMd = [dateFormatter stringFromDate:nowDate];
+            
+            [dateFormatter setDateFormat:@"HH:mm"];
+            if ([need_yMd isEqualToString:now_yMd]) {
+                //// 在同一天
+                dateStr = [NSString stringWithFormat:@"今天 %@",[dateFormatter stringFromDate:needFormatDate]];
+            }else{
+                ////  昨天
+                dateStr = [NSString stringWithFormat:@"昨天 %@",[dateFormatter stringFromDate:needFormatDate]];
+            }
+        }else {
+            
+            [dateFormatter setDateFormat:@"yyyy"];
+            NSString * yearStr = [dateFormatter stringFromDate:needFormatDate];
+            NSString *nowYear = [dateFormatter stringFromDate:nowDate];
+            
+            if ([yearStr isEqualToString:nowYear]) {
+                ////  在同一年
+                [dateFormatter setDateFormat:@"MM月dd日"];
+                dateStr = [dateFormatter stringFromDate:needFormatDate];
+            }else{
+                [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+                dateStr = [dateFormatter stringFromDate:needFormatDate];
+            }
+        }
+        
+        return dateStr;
+    }
+    @catch (NSException *exception) {
+        return @"";
+    }
+    
+    
+} 
+
+
+
+一，转化的方法为
+    NSString *timeSp = [NSString stringWithFormat:@"%d", (long)[localeDate timeIntervalSince1970]];
+    NSLog(@"timeSp:%@",timeSp); //时间戳的值
+
+二，把获取的时间转化为当前时间
+ NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate:datenow];
+    NSDate *localeDate = [datenow  dateByAddingTimeInterval: interval];
+    NSLog(@"%@", localeDate);
+
+3.把时间戳转化为时间的方法
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1363948516];
+    NSLog(@"1363948516  = %@",confromTimesp);
+
+
+// 时间字符串 -> 时间戳
+NSString *string = @"1745645645645";
+NSTimeInterval second = string.longLongValue / 1000.0;
+
+// 时间戳 -> NSDate *
+NSDate *date = [NSDate dateWithTimeIntervalSince1970:second];
+NSLog(@"%@", date);
+注意:使用[NSCalendar currentCalendar],iOS8以后会有bug,要加判断
+// 判断方法一:
+// 宏书写注意:建议不要全是小写,要有大写,否则书写时候参数有ken'neng不提示
+#define iOS(version) ([UIDevice currentDevice].systemVersion.doubleValue >= (version))
+
+NSCalendar *calendar = nil;
+if ([UIDevice currentDevice].systemVersion.doubleValue >= 8.0) {
+    calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+} else {
+    calendar = [NSCalendar currentCalendar];
+}
+
+// 判断方法二:
+NSCalendar *calendar = nil;
+// NSCalendar不提示这个respondsToSelector:方法,但是的确有这个方法
+if ([NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {
+    calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+} else {
+    calendar = [NSCalendar currentCalendar];
+}
+1.NSDate的详细介绍
+1.通过date方法创建出来的对象,就是当前时间对象;
+NSDate *date = [NSDate date];
+NSLog(@"now = %@", date);
+
+2.获取当前所处时区
+NSTimeZone *zone = [NSTimeZone systemTimeZone];
+NSLog(@"now = %@", zone);
+
+3.获取当前时区和指定时间差
+NSInteger seconds = [zone secondsFromGMTForDate:date];
+NSLog(@"seconds = %lu", seconds);
+
+NSDate *nowDate = [date dateByAddingTimeInterval:seconds];
+NSLog(@"nowDate = %@", nowDate);
+
+4.获取当前时间  NSDate --> NSString
+NSDate *date = [NSDate date];
+
+创建一个时间格式化对象
+NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+按照什么样的格式来格式化时间
+formatter.dateFormat = @"yyyy年MM月dd日 HH时mm分ss秒 Z";
+formatter.dateFormat = @"yyyy/MM/dd HH/mm/ss Z";
+formatter.dateFormat = @"MM-dd-yyyy HH-mm-ss";
+
+NSString *res = [formatter stringFromDate:date];
+2.字符串转时间
+    // 时间字符串
+    NSString *str = @"2014-03-11 06:44:11 +0800";
+
+    // 1.创建一个时间格式化对象
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    // 2.格式化对象的样式/z大小写都行/格式必须严格和字符串时间一样
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+
+    // 3.利用时间格式化对象让字符串转换成时间 (自动转换0时区/东加西减)
+    NSDate *date = [formatter dateFromString:str];
+
+    NSLog(@"%@",date);
+3.时间转换成字符串
+    NSDate *now = [NSDate date];
+
+    // 1.创建一个时间格式化对象
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    // 2.设置时间格式化对象的样式
+    formatter.dateFormat = @"yyyy年MM月dd日 HH时mm分ss秒 +0800";
+
+    // 3.利用时间格式化对象对时间进行格式化
+    NSString *str = [formatter stringFromDate:now];
+
+    NSLog(@"%@",str);
+4.利用日历比较两个时间的差值
+     // 时间字符串
+    NSString *str = @"2012-03-11 06:44:11 +0800";
+
+    // 1.创建一个时间格式化对象
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    // 2.格式化对象的样式/z大小写都行/格式必须严格和字符串时间一样
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss Z";
+
+    // 3.字符串转换成时间/自动转换0时区/东加西减
+    NSDate *date = [formatter dateFromString:str];
+    NSDate *now = [NSDate date];
+
+   // 注意获取calendar,应该根据系统版本判断
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    NSCalendarUnit type = NSCalendarUnitYear |
+    NSCalendarUnitMonth |
+    NSCalendarUnitDay |
+    NSCalendarUnitHour |
+    NSCalendarUnitMinute |
+    NSCalendarUnitSecond;
+
+    // 4.获取了时间元素
+    NSDateComponents *cmps = [calendar components:type fromDate:date toDate:now options:0];
+
+    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", cmps.year, cmps.month, cmps.day, cmps.hour, cmps.minute, cmps.second);
+5.日期比较
+// 时间字符串
+NSString *createdAtString = @"2015-11-20 11:10:05";
+NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+NSDate *createdAtDate = [fmt dateFromString:createdAtString];
+
+// 手机当前时间
+NSDate *nowDate = [NSDate date];
+
+/**
+ NSComparisonResult的取值
+ NSOrderedAscending = -1L, // 升序, 越往右边越大
+ NSOrderedSame,  // 相等
+ NSOrderedDescending // 降序, 越往右边越小
+ */
+// 获得比较结果(谁大谁小)
+NSComparisonResult result = [nowDate compare:createdAtDate];
+if (result == NSOrderedAscending) { // 升序, 越往右边越大
+    NSLog(@"createdAtDate > nowDate");
+} else if (result == NSOrderedDescending) { // 降序, 越往右边越小
+    NSLog(@"createdAtDate < nowDate");
+} else {
+    NSLog(@"createdAtDate == nowDate");
+}
+
+
+	•	时间戳:从1970年1月1号 00:00:00开始走过的毫秒数
+	•	注意:1秒==1000毫秒
+
+
+
+
+   //时间范围,从当前时间——后面3天
+//    NSData * dateMin = [NSDate date];
+self.datePicker.minimumDate = [NSDate date];
+NSDate * dateMax = [NSDate dateWithTimeIntervalSinceNow:3*24*60*60];
+self.datePicker.maximumDate = dateMax;
+//自动滚回当前日期
+

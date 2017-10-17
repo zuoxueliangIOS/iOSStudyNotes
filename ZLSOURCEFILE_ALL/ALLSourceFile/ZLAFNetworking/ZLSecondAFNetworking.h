@@ -12,15 +12,15 @@
 /**
  *  网络请求类型
  */
-typedef NS_ENUM(NSUInteger,HttpRequestType) {
+typedef NS_ENUM(NSUInteger,HttpRequestTypeZL) {
     /**
      *  get请求
      */
-    HttpRequestTypeGet = 0,
+    HttpRequestTypeGetzl = 0,
     /**
      *  post请求
      */
-    HttpRequestTypePost
+    HttpRequestTypePostzl
 };
 @interface ZLSecondAFNetworking : NSObject
 + (instancetype)sharedInstance;
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSUInteger,HttpRequestType) {
  */
 - (void)requestWithURLString:(NSString *)URLString
                   parameters:(id)parameters
-                        type:(HttpRequestType)type
+                        type:(HttpRequestTypeZL)type
                      success:(void (^)(id responseObject))success
                      failure:(void (^)(NSError *error))failure;
 
@@ -93,5 +93,25 @@ typedef NS_ENUM(NSUInteger,HttpRequestType) {
                      progerss:(void (^)())progress
                       success:(void (^)())success
                       failure:(void (^)(NSError *error))failure;
+
+/**
+ *==========ZL注释start===========
+ *1.获取当前时间
+ *
+ *2.设置时区
+ *3.设置时间格式
+ *4.返回字符串
+ ===========ZL注释end==========*/
++ (NSString *)getNowTime;
+
+/**
+ *==========ZL注释start===========
+ *1.md5加密
+ *
+ *2.<#注释描述#>
+ *3.<#注释描述#>
+ *4.<#注释描述#>
+ ===========ZL注释end==========*/
++ (NSString *)getMD5fromString:(NSString *)string;
 
 @end

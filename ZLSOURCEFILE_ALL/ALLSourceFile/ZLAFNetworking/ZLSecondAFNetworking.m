@@ -8,6 +8,7 @@
 
 #import "ZLSecondAFNetworking.h"
 #import "UploadParam.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation ZLSecondAFNetworking
 static id _instance = nil;
@@ -112,14 +113,14 @@ static id _instance = nil;
 #pragma mark -- POST/GET网络请求 --
 - (void)requestWithURLString:(NSString *)URLString
                   parameters:(id)parameters
-                        type:(HttpRequestType)type
+                        type:(HttpRequestTypeZL)type
                      success:(void (^)(id))success
                      failure:(void (^)(NSError *))failure {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     switch (type) {
-        case HttpRequestTypeGet:
+        case HttpRequestTypeGetzl:
         {
             [manager GET:URLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (success) {
@@ -132,7 +133,7 @@ static id _instance = nil;
             }];
         }
             break;
-        case HttpRequestTypePost:
+        case HttpRequestTypePostzl:
         {
             [manager POST:URLString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 if (success) {
@@ -182,6 +183,48 @@ static id _instance = nil;
         }
     }];
     [downLoadTask resume];
+}
+
++ (NSString *)getMD5fromString:(NSString *)string{
+    
+    const char *cStr = [string UTF8String];
+    unsigned char result[16];
+    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+    return [NSString stringWithFormat:
+            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
+    
+}
+
++ (NSString *)getNowTime{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    //设置时区,这个对于时间的处理有时很重要
+    
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    
+    [formatter setTimeZone:timeZone];
+    
+    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+    NSLog(@"时间未格式化之前得到的字符串：%@",timeSp);
+    NSString * timeFp = [formatter stringFromDate:datenow];
+    NSLog(@"时间格式化之后的得到的字符串：%@",timeFp);
+
+    
+    return timeSp;
+    
 }
 
 @end

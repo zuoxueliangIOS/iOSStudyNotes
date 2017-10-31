@@ -1,0 +1,9 @@
+
+#define IOS8 ([[[UIDevice currentDevice] systemVersion] doubleValue] >=8.0 ? YES : NO)
+if (IOS8) { //iOS8以上包含iOS8
+        if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIRemoteNotificationTypeNone) {
+    }
+ }else{ // ios7 一下    
+         if ([[UIApplication sharedApplication] enabledRemoteNotificationTypes]  == UIRemoteNotificationTypeNone) {
+  }
+}

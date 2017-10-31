@@ -1,0 +1,110 @@
+- (NSDictionary *)JSONDict {
+    if (_JSONDict == nil) {
+        _JSONDict = @{@"name" : [NSNull null],
+                      @"age" : @20,
+                      @"sex" : @0,
+                      @"login_date" : @"1445136827",
+                      @"phone" : @{
+                              @"name" : @"小明的iPhone",
+                              @"price" : @5000
+                      }
+                      @"books" : @[
+                              @{@"name" : @"西游记"},
+                          @{@"name" : @"三国演义"}
+                      ]
+                      };
+    }
+    return _JSONDict;
+}
+
+
+
+.h
+typedef NS_ENUM(NSUInteger, Sex) {
+    SexMale,
+    SexFemale
+};
+
+@interface BookForMantle : MTLModel <MTLJSONSerializing>
+@property (nonatomic, copy, nullable) NSString *name;
+@end
+
+@interface PhoneForMantle : MTLModel <MTLJSONSerializing>
+@property (nonatomic, copy, nullable) NSString *name;
+@property (nonatomic, assign) double price;
+@end
+
+@interface UserForMantle : MTLModel <MTLJSONSerializing>
+@property (nonatomic, copy, nullable) NSString *name;
+@property (nonatomic, assign) NSInteger age;
+@property (nonatomic, assign)  Sex sex;
+@property (nonatomic, strong, nullable) NSDate *loginDate;
+@property (nonatomic, strong, nullable) PhoneForMantle *phone;
+@property (nonatomic, copy, nullable) NSArray<BookForMantle *> *books;
+@end
+
+.m
+@implementation PhoneForMantle
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"name" : @"name",
+             @"price" : @"price"};
+}
+
+@end
+
+@implementation BookForMantle
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"name" : @"name"};
+}
+
+@end
+
+@implementation UserForMantle
+
+// 该map不光是JSON->Model, Model->JSON也会用到
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{@"name" : @"name",
+             @"age" : @"age",
+             @"sex" : @"sex",
+             @"loginDate" : @"login_date",
+             @"phone" : @"phone",
+             @"books" : @"books"};
+}
+
+// 模型里面的模型
++ (NSValueTransformer *)phoneTransformer {
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[PhoneForMantle class]];
+}
+
+// 模型里面的数组
++ (NSValueTransformer *)booksTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[BookForMantle class]];
+}
+
+// 时间
++ (NSValueTransformer *)loginDateJSONTransformer {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *timeIntervalSince1970, BOOL *success, NSError *__autoreleasing *error) {
+        NSTimeInterval timeInterval = [timeIntervalSince1970 doubleValue];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+        return date;
+    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
+        NSTimeInterval timeInterval = date.timeIntervalSince1970;
+        return @(timeInterval).stringValue;
+    }];
+}
+
+@end
+
+
+// 注意: Mantle不会自动转类型，如：String->Int, 一旦类型不匹配，直接crash
+// Json->Model
+// 该方法会调用key-key map方法。
+self.userForMantle = [MTLJSONAdapter modelOfClass:[UserForMantle class] fromJSONDictionary:self.JSONDict error:nil];
+// 这种方式只是简单的使用KVC进行赋值。不会调用key-key map方法, 要求属性和JSON字典中的key名称相同，否则就crash
+//    self.userForMantle = [UserForMantle modelWithDictionary:self.JSONDict error:&error];
+
+// Model -> JSON
+// 一旦有属性为nil, Mantle会转换成NSNull对象放到JSON字典中，这里有一个坑，使用NSUserDefault存储这样的JSON字典时，程序crash，原因是不可以包含NSNull对象。
+NSDictionary *jsonDict = [MTLJSONAdapter JSONDictionaryFromModel:self.userForMantle error:nil];

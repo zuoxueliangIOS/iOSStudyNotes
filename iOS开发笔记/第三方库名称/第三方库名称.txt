@@ -13,8 +13,8 @@
 13. MBProgressHUD
 14. Bugly
 15. WMPageController
-16. MJExtension
-17. IQKeyboardManager
+16. MJExtension  json解析
+17. IQKeyboardManager  #键盘管理
 18. MGSwipeTableCell
 19. DZNSegmentedControl
 20. ZFPlayer
@@ -29,6 +29,106 @@
 29. UICountingLabel
 30. YSMChineseSort
 31. UITableView+FDTemplateLayoutCell
-32. TTTAttributedLabel
+32. TTTAttributedLabel    #富文本
 33. IDMPhotoBrowser
 34. SDAutoLayout
+35。TSMessages 非HUD 提示框
+36. SMSSDK   mob.com短信平台
+37. XYQRegexPattern  正则表达式
+38. Hyphenate 美国即时通信平台
+39. EaseUI  环信
+40. BHInfiniteScrollView 轮播图
+41. DGThumbUpButton  点赞按钮
+42. InAppSettingsKit 应用配置
+43. YYModel
+44. RMStore   苹果内购
+45. YZDisplayViewController  # 类似网易新闻的标签栏
+46. PYPhotoBrowser  # 图片浏览器
+47. DZNEmptyDataSet  # 空占位
+48. ActionSheetPicker  # 选择器
+49. CHTCollectionViewWaterfallLayout  # 瀑布流
+50. pop  # 动画
+51. FLEX  #内部调试工具 'FLEX', '~> 2.0', :configurations => ['Debug']
+52. TXScrollLabelView  # 文字滚动的label
+53. LBXScan/LBXNative
+	LBXScan/LBXZXing
+	LBXScan/LBXZBar                 
+	LBXScan/UI    #二维码  条形码
+54. FBMemoryProfiler  #FaceBook 内存分析工具 FBAllocationTracker 和 FBRetainCycleDetector两个工具
+55. KVOController  #FaceBook KVO（优雅的代替系统原生的KVO）
+56. UICollectionViewLeftAlignedLayout #UICollectionView左对齐布局
+57. BlocksKit #UI block
+58. libextobjc  #非常强大的Objective-C库的扩展
+59. JMRoundedCorner
+	HYBImageCliped
+	ZYCornerRadius
+	HJCornerRadius', :git => 'https://github.com/panghaijiao/HJCornerRadius.git'
+	# view的圆角处理 避免离屏渲染
+60. LxDBAnything  #打印一切
+61. JPFPSStatus #FPS检测
+62. MMMaterialDesignSpinner  # 菊花activity
+63. SAMKeychain  # 钥匙串存储
+64. SSZipArchive  # 文件压缩与解压
+65.	JSBadgeView
+	WZLBadge   # badgeValue
+66. SocketRocket  # WebSocket
+67. FXBlurView  # UIView模糊
+68. pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag => '2.5.2'   # 适配Xcode9.0 iOS 11
+	# pod 'ReactiveCocoa'  # 消息链
+69. DACircularProgress  # 环形进度条
+70. JDStatusBarNotification  # 状态栏通知
+71. 'UIImage+ImageWithColor  # 根据颜色 生成一张图片
+72. Colours  # 颜色分类
+73. CocoaSecurity  # 加密
+74. #########  YYKit ###############
+	#pod 'YYKit'                             , '1.0.9'
+	# YYKit 的一套分类
+	pod 'YYCategories'                      , '1.0.4'
+	# 富文本
+	pod 'YYText'                            , '1.0.7'
+	# 字典转模型
+	pod 'YYModel'                           , '1.0.4'
+	# YYImage
+	pod 'YYImage'                           , '1.0.4'
+	# webP
+	pod 'YYImage/WebP'
+	# 高性能的 iOS 缓存框架
+	pod 'YYCache'                           , '1.0.4'
+	# 高性能的 iOS 异步图像加载框架。
+	pod 'YYWebImage'                        , '1.0.5'
+	# iOS 键盘监听管理工具
+	pod 'YYKeyboardManager'                 , '1.0.1'
+	# iOS 全局并发队列管理工具
+	pod 'YYDispatchQueuePool'               , '1.0'
+	# iOS 异步绘制与显示的工具
+	pod 'YYAsyncLayer'                      , '1.0'
+
+75. YSMChineseSort  
+76. MSWeakTimer
+77. RegexKitLite
+78. ASIHTTPRequest
+79. JSONModel
+80. CocoaLumberjack   2.0.0-rc
+81. JSPatch
+82. XAspect
+83. CYLTabBarController
+84. LKDBHelper
+85. RegexKitLite
+86. OCMock
+87. pod 'FBSnapshotTestCase/Core', '~> 2.1'
+88. pod 'JGMethodSwizzler', :git => 'https://github.com/JonasGessner/JGMethodSwizzler', :branch => 'master'
+89. PINRemoteImage
+90. MWPhotoBrowser   #图片浏览器
+91. JVFloatLabeledTextField  
+
+
+
+
+
+
+
+
+
+
+
+

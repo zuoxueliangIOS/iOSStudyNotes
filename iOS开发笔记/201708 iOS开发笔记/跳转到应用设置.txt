@@ -1,0 +1,35 @@
+- (void)loadAlertActionController{
+    //UIAlertActionStyleDestructive
+    
+    UIAlertAction * alertAction1 = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weak_self(self) toSettingView];
+    }];
+    UIAlertAction * alertAction2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"请允许通知" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:alertAction1];
+    [alertVC addAction:alertAction2];
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
+}
+
+
+- (void)toSettingView{
+    
+    NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    //ios < 10.0
+    if(kDeviceVersion < 10.0){
+        if( [[UIApplication sharedApplication]canOpenURL:url] ) {
+            [[UIApplication sharedApplication]openURL:url];
+        }
+    }else{
+    //ios >= 10.0
+        if( [[UIApplication sharedApplication]canOpenURL:url] ) {
+            [[UIApplication sharedApplication]openURL:url options:@{}completionHandler:^(BOOL  success) {
+                
+            }];
+        }
+    }
+}

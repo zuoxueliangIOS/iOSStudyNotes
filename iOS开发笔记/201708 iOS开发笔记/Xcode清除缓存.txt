@@ -1,0 +1,4 @@
+~/Library/Developer/Xcode/DerivedData
+~/资源库/Developer/CoreSimulator/Devices/
+~/资源库/Application Support/MobileSync/Backup
+//清理Xode缓存

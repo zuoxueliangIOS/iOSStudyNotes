@@ -1,0 +1,4 @@
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;//白色
+}

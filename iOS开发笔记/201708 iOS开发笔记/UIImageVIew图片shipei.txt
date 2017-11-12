@@ -1,0 +1,2 @@
+_ImgAttachePhoto.contentMode = UIViewContentModeScaleAspectFill;
+    _ImgAttachePhoto.clipsToBounds = YES;

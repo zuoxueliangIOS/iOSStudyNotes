@@ -1,0 +1,46 @@
+- (void)settingCollectionView{
+    //创建一个Layout布局
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    //设置布局方向为垂直流布局
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    //设置每个item的大小为
+    layout.itemSize = CGSizeMake(Collection_item_Width, Collection_item_Height);
+    //item距离四周的位置（上左下右）
+    layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    //item 行与行的距离
+    layout.minimumLineSpacing = 10;
+    //item 列与列的距离
+    layout.minimumInteritemSpacing = 10;
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"MsgLastCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionID"];
+    [self addSubview:self.collectionView];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(self);
+        make.height.mas_equalTo(90);
+    }];
+}
+#pragma mark CollectionView  的  dataSource方法
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 10;
+}
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString * cellId = @"CollectionID";
+    MsgLastCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+}

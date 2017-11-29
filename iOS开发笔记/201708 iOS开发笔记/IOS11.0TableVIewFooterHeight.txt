@@ -1,0 +1,1 @@
+  self.ProjectPlanTableView.sectionFooterHeight = 0.0000000001f;

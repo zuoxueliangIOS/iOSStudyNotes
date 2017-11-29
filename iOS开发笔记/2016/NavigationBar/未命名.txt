@@ -1,0 +1,10 @@
+去除NavigationBar下面的线
+self.navigationController.navigationBar.barStyle = UIBaselineAdjustmentNone;
+隐藏NavigationBar
+self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"touMing"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

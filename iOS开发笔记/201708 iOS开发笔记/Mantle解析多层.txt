@@ -1,0 +1,14 @@
+////解析嵌套 Model
+//+ (NSValueTransformer *)sysJSONTransformer {
+//    return [MTLJSONAdapter dictionaryTransformerWithModelClass:sysModel.class];
+//    
+//    // 下面方法与上面这个效果一样。
+//    return [MTLValueTransformertransformerUsingForwardBlock:^id(id value,BOOL *success, NSError *__autoreleasing *error) {
+//        NSDictionary *dic = value;
+//        return [MTLJSONAdaptermodelOfClass:[sysModelclass] fromJSONDictionary:dicerror:nil];
+//    }];
+//}
+////解析 多层数组 数组
+//+ (NSValueTransformer *)arrWeathersJSONTransformer {
+//    return [MTLJSONAdapterarrayTransformerWithModelClass:WeatherModel.class];
+//}

@@ -1,0 +1,26 @@
+方法一：
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    // 第一种办法：为了避免push和pop时导航条出现的黑块，给window设置一个背景色
+    self.window.backgroundColor = kNavBarColor;
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+
+方法二：
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // 第二种办法：在隐藏导航栏的时候要添加动画
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // 第二种办法：在显示导航栏的时候要添加动画
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}

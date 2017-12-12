@@ -47,7 +47,7 @@
 47. DZNEmptyDataSet  # 空占位
 48. ActionSheetPicker  # 选择器
 49. CHTCollectionViewWaterfallLayout  # 瀑布流
-50. pop  # 动画
+50. pop  # 动画 facebook 开源框架 
 51. FLEX  #内部调试工具 'FLEX', '~> 2.0', :configurations => ['Debug']
 52. TXScrollLabelView  # 文字滚动的label
 53. LBXScan/LBXNative
